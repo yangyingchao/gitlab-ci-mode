@@ -4,7 +4,7 @@
 ;;
 ;; Author: Joe Wreschnig
 ;; Keywords: tools, vc
-;; Package-Requires: ((emacs "25.1") (yaml-mode "0.0.12"))
+;; Package-Requires: ((emacs "25.1"))
 ;; Package-Version: 20191022.12.4
 ;; URL: https://gitlab.com/joewreschnig/gitlab-ci-mode/
 ;;
@@ -40,7 +40,7 @@
 (require 'json)
 (require 'subr-x)
 (require 'url)
-(require 'yaml-mode)
+(require 'yaml-ts-mode)
 
 (defconst gitlab-ci-configuration-variables
   '("CI_DEBUG_TRACE"
@@ -331,7 +331,7 @@ CANDIDATES list."
                 :exit-function gitlab-ci--post-completion)))))
 
 ;;;###autoload
-(define-derived-mode gitlab-ci-mode yaml-mode "GitLab CI"
+(define-derived-mode gitlab-ci-mode yaml-ts-mode "GitLab CI"
   "Major mode for editing GitLab CI (‘.gitlab-ci.yml’) files.
 
 GitLab CI uses a YAML-based file format to configure the jobs it
@@ -347,7 +347,7 @@ automatically out of security concerns. Use ‘gitlab-ci-lint’ to
 lint interactively on-demand, or ‘gitlab-ci-request-lint’ to
 integrate the linting process with other software.
 
-Although this derives from ‘yaml-mode’, it does not truly parse
+Although this derives from ‘yaml-ts-mode’, it does not truly parse
 YAML.  Only idiomatic GitLab CI syntax will be handled correctly.
 In particular, it does not expect to encounter tags."
   :group 'gitlab-ci
